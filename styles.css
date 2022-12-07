@@ -109,11 +109,11 @@ button {
   margin: 0.75em 0;
 }
 
-.primary .primary-image {
+.section.primary .primary-image {
   width: 100%;
 }
 
-.primary .primary-image.desktop {
+.section.primary .primary-image.desktop {
   display: none;
 }
 
@@ -174,6 +174,11 @@ button {
   border-bottom: 1px solid var(--color-dgblue);
 }
 
+.section.trending {
+  display: flex;
+  flex-direction: column;
+}
+
 .section.trending .trending-article {
   display: flex;
   align-items: stretch;
@@ -181,16 +186,17 @@ button {
 }
 
 .trending-article .trending-image {
-  flex: 1;
+  flex: 2;
 }
 
 .trending-article .trending-information {
-  padding: 0.25em 0 0.25em 1.25em;
-  flex: 2;
+  flex: 5;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-self: stretch;
+  justify-self: center;
+  padding: 0.25em 0 0.25em 1em;
 }
 
 .trending-information .trending-number {
@@ -207,12 +213,29 @@ button {
 }
 
 @media screen and (min-width: 768px) {
-  .primary .primary-image.desktop {
+  .main {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .section.primary {
+    display: grid;
+  }
+
+  .section.primary .primary-content {
+    display: flex;
+    margin-top: 1em;
+  }
+
+  .section.primary .primary-image.desktop {
     display: block;
   }
 
-  .primary .primary-image.mobile {
+  .section.primary .primary-image.mobile {
     display: none;
+  }
+
+  .section.new {
+    height: min-content;
   }
 
   .menu-button {
@@ -235,5 +258,19 @@ button {
     margin: 0 1em;
     font-size: 1.15rem;
     color: var(--color-dgblue);
+  }
+
+  .section.trending {
+    flex-direction: row;
+    justify-content: space-between;
+    grid-column: 1 / span 2;
+  }
+
+  .section.trending .trending-article {
+    max-width: 30%;
+  }
+
+  .trending-article .trending-image img {
+    height: 100%;
   }
 }
